@@ -85,7 +85,8 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-    cartList.splice(index)
+  //usamos el valor 0 para que empiece a contar y vacíe todo el array
+    cartList.splice(0)
     console.log(cartList)
 }
 
