@@ -9,7 +9,7 @@ Buscar el producto con el id y añadirlo al array cartList.
 - Se puede utilizar el bucle for.
 
 ### Ejercicio 2  
-- Implementar la función vaciar carrito, que permita al usuario eliminar el array generado en el ejericio anterior. *Hay vídeo con info*
+- Implementar la función vaciar carrito, que permita al usuario eliminar el array generado en el ejericio anterior. *Hay info*
 
 ### Ejercicio 3
 - Implementar un bucle for para sumar el importe de todos los productos.  

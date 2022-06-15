@@ -80,10 +80,14 @@ function buy(id) {
       cartList.push(products[counter - 1]);
     }
   }
+  console.log(cartList)
 }
 
 // Exercise 2
-function cleanCart() {}
+function cleanCart() {
+    cartList.splice(index)
+    console.log(cartList)
+}
 
 // Exercise 3
 function calculateTotal() {
