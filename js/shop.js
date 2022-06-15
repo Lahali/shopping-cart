@@ -75,24 +75,38 @@ var total = 0;
 function buy(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
+
   for (let counter = 0; counter < products.length; counter++) {
     if (counter === id) {
       cartList.push(products[counter - 1]);
     }
   }
-  console.log(cartList)
+  console.log(cartList);
+  calculateTotal()
 }
 
 // Exercise 2
 function cleanCart() {
   //usamos el valor 0 para que empiece a contar y vacíe todo el array
-    cartList.splice(0)
-    console.log(cartList)
+  cartList.splice(0);
+  console.log(cartList);
 }
 
 // Exercise 3
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
+  let totalPrice = 0
+  const productPrice = []
+  cartList.forEach(element => {
+    productPrice.push(element.price)
+  });
+
+  for (let counter = 0; counter < productPrice.length; counter++) {
+    totalPrice += productPrice[counter]
+  }
+  
+  console.log(productPrice)
+  console.log(totalPrice)
 }
 
 // Exercise 4
