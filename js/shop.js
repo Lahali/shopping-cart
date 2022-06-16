@@ -82,7 +82,7 @@ function buy(id) {
     }
   }
   console.log(cartList);
-  calculateTotal()
+  calculateTotal();
 }
 
 // Exercise 2
@@ -94,26 +94,41 @@ function cleanCart() {
 
 // Exercise 3
 function calculateTotal() {
+  // A esta función la llama la función buy porque no hay ningún botón que la llame
   // Calculate total price of the cart using the "cartList" array
-  let totalPrice = 0
-  const productPrice = []
-  cartList.forEach(element => {
-    productPrice.push(element.price)
+  let totalPrice = 0;
+  const productPrice = [];
+  cartList.forEach((element) => {
+    productPrice.push(element.price);
   });
 
   for (let counter = 0; counter < productPrice.length; counter++) {
-    totalPrice += productPrice[counter]
+    totalPrice += productPrice[counter];
   }
-  
-  console.log(productPrice)
-  console.log(totalPrice)
+
+  console.log(productPrice);
+  console.log(totalPrice);
 }
 
 // Exercise 4
 function generateCart() {
   // Using the "cartlist" array that contains all the items in the shopping cart,
   // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+  for (let counter = 0; counter < cartList.length; counter++) {
+    cartList.find((element) => {
+      if (cartList[counter].id === cartList.element) {
+        cart.push(cartList[counter]);
+      }
+    });
+  }
+  console.log(cart);
 }
+
+// for (let i = 0; i < cart.length; i++) {
+//   if (cartList[counter].id !== cart[i].id) {
+//     cart.push(cartList)
+//   }
+// }
 
 // Exercise 5
 function applyPromotionsCart() {
