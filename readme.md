@@ -25,6 +25,28 @@ Buscar el producto con el id y añadirlo al array cartList.
     2. Si ya existe, incrementar el campo quantity.
 
 ### Ejercicio 5  
+- Implementar las promociones.  
+    1. Si el usuario compra 3 o más botellas de aceite, el precio desciende a 10 €.  
+    2. Cuando se compran 10 o más productos para hacer pasteles, el precio se rabaja a 2/3.
+- Hay que completar la función applyPromocionsCart().  
+- Recibe el array cart y modifica el campo subtotalWithDiscount en caso de que se aplique la promoción.  
+- *Si el campo quantity cumple con la oferta, el precio total con descuento se guarda en el campo subtotalWithDiscount.*  
+
 ### Ejercicio 6  
-### Ejercicio 7
+- Mostar el carrito de la compra al usuario.  
+- El id es cartModal y se tiene que incluir dentro de la función printCart().  
+- La maquetación está hecha, pero hay que modificarla para que sea dinámica (mirar foto).  
+
+### Ejercicio 7  
+- Hay que implementar la lógica de la pantalla principal.  
+- Hay que implementar la validación del formulario de checkout que está en el archivo checkout.js.  
+- Se accede al clicar el botón modal del carrito.  
+- El primer objetivo es validar el formulario checkout.html utilizando el archivo checkout.js. Los requisitos del formularios son:
+    1. Todos los campos son obligatorios.
+    2. Todos los campos han de tener al menos 3 caracteres.
+    3. El nombre y apellidos ha de tener sólo letras. 
+    4. El teléfono solo puede tener números.
+    5. La contraseña ha de tener números y letras.  
+    6. El email tiene que tener formato de email.  
+- Si los campos no cumplen los requisitos, el input se resaltará en rojo y saldrá un mensaje de error en la parte inferior. *Se puede colorear de rojo el input o usar la clase is-invalid de bootstrap*
 
