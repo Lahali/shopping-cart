@@ -119,6 +119,24 @@ function generateCart() {
     cartList[index];
     element.quantity = 1
   });
+  
+  //he necesitado ordenar el array xq si estaban desordenados los items no funcionaba el for
+  cartList.sort((a, b) => {
+    if (a.id < b.id) {
+      return -1
+    }
+    if (a.id > b.id) {
+      return 1
+    }
+    return 0
+  })
+
+  for (let counter = 0; counter < cartList.length; counter++){
+    if(cartList[counter] === cartList[counter+1]){
+     const addQuantity = cartList[counter]
+      cart.push(addQuantity)
+    }
+  }
 
   console.log(cartList)
   console.log(cart);
