@@ -114,24 +114,16 @@ function calculateTotal() {
 function generateCart() {
   // Using the "cartlist" array that contains all the items in the shopping cart,
   // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-  for (let counter = 0; counter < cartList.length; counter++) {
-    if(cartList[counter].id !== cart) {
-      const element = cartList[counter];
-      element.quantity = 1;
-      cart.push(element)
-    }
-    if(cartList[counter].id === cart[counter].id) {
-      cart[counter].quantity + 1
-    }
-}
+
+  cartList.forEach((element, index) => {
+    cartList[index];
+    element.quantity = 1
+  });
+
+  console.log(cartList)
   console.log(cart);
 }
 
-// for (let i = 0; i < cart.length; i++) {
-//   if (cartList[counter].id !== cart[i].id) {
-//     cart.push(cartList)
-//   }
-// }
 
 // Exercise 5
 function applyPromotionsCart() {
