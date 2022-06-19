@@ -122,20 +122,19 @@ function generateCart() {
   
   //he necesitado ordenar el array xq si estaban desordenados los items no funcionaba el for
   cartList.sort((a, b) => {
-    if (a.id < b.id) {
-      return -1
-    }
-    if (a.id > b.id) {
-      return 1
-    }
-    return 0
+   return a.id - b.id
   })
 
-  for (let counter = 0; counter < cartList.length; counter++){
-    if(cartList[counter] === cartList[counter+1]){
-     const addQuantity = cartList[counter]
-      cart.push(addQuantity)
+  for (let counter = 0; counter < cartList.length; counter++) {
+    if (cartList[counter] !== cartList[counter + 1]) {
+      const addItem = cartList[counter];
+      cart.push(addItem);
     }
+    cartList.forEach((element, index) => {
+      if (cartList[index] === cartList[index+1]) {
+        element.quantity += 1
+      }
+    });
   }
 
   console.log(cartList)
