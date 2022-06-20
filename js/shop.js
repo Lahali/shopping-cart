@@ -89,7 +89,9 @@ function buy(id) {
 function cleanCart() {
   //usamos el valor 0 para que empiece a contar y vacíe todo el array
   cartList.splice(0);
+  cart.splice(0);
   console.log(cartList);
+  console.log(cart);
 }
 
 // Exercise 3
@@ -117,13 +119,13 @@ function generateCart() {
 
   cartList.forEach((element, index) => {
     cartList[index];
-    element.quantity = 1
+    element.quantity = 1;
   });
-  
+
   //he necesitado ordenar el array xq si estaban desordenados los items no funcionaba el for
   cartList.sort((a, b) => {
-   return a.id - b.id
-  })
+    return a.id - b.id;
+  });
 
   for (let counter = 0; counter < cartList.length; counter++) {
     if (cartList[counter] !== cartList[counter + 1]) {
@@ -131,20 +133,34 @@ function generateCart() {
       cart.push(addItem);
     }
     cartList.forEach((element, index) => {
-      if (cartList[index] === cartList[index+1]) {
-        element.quantity += 1
+      if (cartList[index] === cartList[index + 1]) {
+        element.quantity += 1;
       }
     });
   }
 
-  console.log(cartList)
+  console.log(cartList);
   console.log(cart);
 }
-
 
 // Exercise 5
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
+
+  cart.forEach((element, index) => {
+    if (cart[index].id === 1) {
+      if (cart[index].quantity >= 3) {
+        element.price = 10;
+      }
+    }
+    if (cart[index].id === 3) {
+      if (cart[index].quantity >= 10) {
+        const discountCake = cart[index].price - cart[index].price * 0.3;
+        element.price = discountCake;
+      }
+    }
+  });
+  console.log(cart);
 }
 
 // Exercise 6
