@@ -82,15 +82,15 @@ function buy(id) {
     }
   }
   console.log(cartList);
-  calculateTotal();
+  //calculateTotal();
 }
 
 // Exercise 2
 function cleanCart() {
-  cartList = []
-  cart = []
-  console.log(cartList)
-  console.log(cart)
+  cartList = [];
+  cart = [];
+  console.log(cartList);
+  console.log(cart);
 }
 
 // Exercise 3
@@ -131,11 +131,9 @@ function generateCart() {
       const addItem = cartList[counter];
       cart.push(addItem);
     }
-    cartList.forEach((element, index) => {
-      if (cartList[index] === cartList[index + 1]) {
-        element.quantity += 1;
-      }
-    });
+    if (cartList[counter] === cartList[counter + 1]) {
+      cartList[counter].quantity += 1;
+    }
   }
 
   cart.forEach((element, index) => {
@@ -147,7 +145,6 @@ function generateCart() {
   console.log(cart);
 }
 
-
 // Exercise 5
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
@@ -155,14 +152,17 @@ function applyPromotionsCart() {
   cart.forEach((element, index) => {
     if (cart[index].id === 1) {
       if (cart[index].quantity >= 3) {
-        element.price = 10;
+        element.priceDiscount = 10;
+        const discountOil = cart[index].quantity * element.priceDiscount;
+        element.subtotalWithDiscount = discountOil;
       }
-     // element.subtotalWithDiscount = cart[index].quantity * element.price
     }
     if (cart[index].id === 3) {
       if (cart[index].quantity >= 10) {
         const discountCake = cart[index].price - cart[index].price * 0.3;
-        element.price = discountCake;
+        element.priceDiscount = discountCake;
+        element.subtotalWithDiscount =
+          element.priceDiscount * cart[index].quantity;
       }
     }
   });
@@ -172,14 +172,14 @@ function applyPromotionsCart() {
 // Exercise 6
 function printCart() {
   // Fill the shopping cart modal manipulating the shopping cart dom
-  generateCart()
-  const cartListPrinted = document.getElementById("cart_list")
+  generateCart();
+  const cartListPrinted = document.getElementById("cart_list");
   // const productName = cart.name
   // const productPrice = cart.price
   // const productQuantity = cart.quantity
-  
+
   for (let counter = 0; counter < cart.length; counter++) {
-   cartListPrinted.innerHTML = cart[counter].name
+    cartListPrinted.innerHTML = cart[counter].name;
   }
 }
 
