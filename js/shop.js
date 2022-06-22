@@ -137,9 +137,9 @@ function generateCart() {
   }
 
   cart.forEach((element, index) => {
-    cart[index]
-    element.subtotal = cart[index].quantity * cart[index].price
-  })
+    cart[index];
+    element.subtotal = cart[index].quantity * cart[index].price;
+  });
 
   console.log(cartList);
   console.log(cart);
@@ -172,15 +172,46 @@ function applyPromotionsCart() {
 // Exercise 6
 function printCart() {
   // Fill the shopping cart modal manipulating the shopping cart dom
-  generateCart();
-  const cartListPrinted = document.getElementById("cart_list");
-  // const productName = cart.name
-  // const productPrice = cart.price
-  // const productQuantity = cart.quantity
 
+  const table = document.getElementById("cart_list");
+  table.innerHTML = "";
+  let totalPriceDiscount = 0
+  let totalPriceNoDiscount = 0
+  
   for (let counter = 0; counter < cart.length; counter++) {
-    cartListPrinted.innerHTML = cart[counter].name;
+    const row = document.createElement("tr");
+    const cellProductName = document.createElement("th");
+    cellProductName.innerHTML = cart[counter].name;
+    const cellProductPrice = document.createElement("td");
+    cellProductPrice.innerHTML = cart[counter].price;
+    const cellProductQuantity = document.createElement("td");
+    cellProductQuantity.innerHTML = cart[counter].quantity;
+    const cellProductTotal = document.createElement("td");
+    if (!cart[counter].subtotalWithDiscount) {
+      cellProductTotal.innerHTML = cart[counter].subtotal;
+    } else {
+      cellProductTotal.innerHTML = cart[counter].subtotalWithDiscount;
+    }
+    
+    row.appendChild(cellProductName);
+    row.appendChild(cellProductPrice);
+    row.appendChild(cellProductQuantity);
+    row.appendChild(cellProductTotal);
+    table.appendChild(row);
+
+    if (!cart[counter].subtotalWithDiscount) {
+      totalPriceNoDiscount += cart[counter].subtotal
+    } else {
+      totalPriceDiscount += cart[counter].subtotalWithDiscount
+    }
+
   }
+  
+  const elementPrice = document.getElementById("total_price");
+  const totalPrice = (totalPriceDiscount + totalPriceNoDiscount)
+  elementPrice.innerHTML = totalPrice
+  console.log(totalPrice)
+
 }
 
 // ** Nivell II **
@@ -200,5 +231,7 @@ function removeFromCart(id) {
 
 function open_modal() {
   console.log("Open Modal");
+  generateCart();
+  applyPromotionsCart();
   printCart();
 }
