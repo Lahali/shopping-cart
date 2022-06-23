@@ -37,8 +37,7 @@ Buscar el producto con el id y añadirlo al array cartList.
 - El id es cartModal y se tiene que incluir dentro de la función printCart().  
 - La maquetación está hecha, pero hay que modificarla para que sea dinámica (mirar foto).  
 
-### Ejercicio 7  
-- Hay que implementar la lógica de la pantalla principal.  
+### Ejercicio 7   
 - Hay que implementar la validación del formulario de checkout que está en el archivo checkout.js.  
 - Se accede al clicar el botón modal del carrito.  
 - El primer objetivo es validar el formulario checkout.html utilizando el archivo checkout.js. Los requisitos del formularios son:
