@@ -23,29 +23,25 @@ function validate(event) {
   //Uso de expresiones regulares para asegurarnos de que el formato de nombre y email es correcto
   
   // \d => busca números arábigos
-  const itIsANumber = /\d/;
+  const phoneValidation = /^[0-9]{9}$/;
+  const nameAndSurnameValidation = /^[A-Za-z]{3,}$/;
+  const addressValidation = /^(?! )[A-Za-z0-9\s]{3,}$/
+  const emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  const passwordValidation = /^(?=.*?\d)(?=.*?[a-zA-Z])[a-zA-Z\d]+$/
 
-  // \D => busca letras latinas
-  const itIsALetter = /\D/;
- 
-  // esta línea busca que el mail tenga un formato correcto
-  const emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/
-
-  // const passwordValidation =
-
-  if (fName.value === "" || fName.value === itIsANumber) {
+  if (fName.value === "" || fName.value !== nameAndSurnameValidation) {
     error++;
     fName.classList.add("is-invalid")
     console.log("te has equivocado");
   }
 
-  if (fLastName.value === "" || fLastName === itIsANumber) {
+  if (fLastName.value === "" || fLastName !== nameAndSurnameValidation) {
     error++
     fLastName.classList.add("is-invalid")
     console.log('escribe bien')
   }
    
-  if (fPhone.value === "" || fPhone === itIsALetter) {
+  if (fPhone.value === "" || fPhone !== phoneValidation) {
     error++
     fPhone.classList.add("is-invalid")
     console.log('eso no es un teléfono')
@@ -56,6 +52,13 @@ function validate(event) {
     fEmail.classList.add("is-invalid")
     console.log('no sabes escribir un email')
   }
+
+  if (fPassword.value === "" || fPassword !== passwordValidation) {
+    fPassword.classList.add("is-invalid")
+    console.log("maaaaaaaal")
+  }
+
+
 
   if (error > 0) {
     alert("Error");

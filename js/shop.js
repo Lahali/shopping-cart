@@ -96,8 +96,8 @@ function applyPromotionsCart() {
     }
     if (cart[index].id === 3) {
       if (cart[index].quantity >= 10) {
-        const discountCake = cart[index].price - cart[index].price * 0.3;
-        element.priceDiscount = discountCake;
+        const discountCake = (cart[index].price / 3) * 2;
+        element.priceDiscount = discountCake.toFixed(2);
         element.subtotalWithDiscount =
           element.priceDiscount * cart[index].quantity;
       }
@@ -146,7 +146,7 @@ function printCart() {
   
   const elementPrice = document.getElementById("total_price");
   const totalPrice = (totalPriceDiscount + totalPriceNoDiscount)
-  elementPrice.innerHTML = totalPrice
+  elementPrice.innerHTML = totalPrice.toFixed(2)
   console.log(totalPrice)
 
 }
