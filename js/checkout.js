@@ -1,9 +1,15 @@
+
+//evitamos que el formulario corra el código.
+
 const form = document.getElementById("form");
-form.addEventListener("submit", validate);
+form.addEventListener("submit", (event) => {
+	event.preventDefault(validate)
+})
+
 
 // Exercise 6
 function validate(event) {
-  //event.preventDefault()
+ //event.preventDefault()
 
   let error = 0;
   // Get the input fields
@@ -19,44 +25,46 @@ function validate(event) {
   const errorEmail = document.getElementById("errorEmail");
 
   // Validate fields entered by the user: name, phone, password, and email
-  
-  //Uso de expresiones regulares para asegurarnos de que el formato de nombre y email es correcto
-  
-  // \d => busca números arábigos
-  const phoneValidation = /^[0-9]{9}$/;
-  const nameAndSurnameValidation = /^[A-Za-z]{3,}$/;
-  const addressValidation = /^(?! )[A-Za-z0-9\s]{3,}$/
-  const emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-  const passwordValidation = /^(?=.*?\d)(?=.*?[a-zA-Z])[a-zA-Z\d]+$/
 
-  if (fName.value === "" || fName.value !== nameAndSurnameValidation) {
+  //Uso de expresiones regulares para asegurarnos de que el formato de nombre y email es correcto
+  const regExp = {
+    phone: /^[0-9]{9}$/,
+    nameAndSurname: /^[A-Za-z]{3,}$/,
+    address: /^(?! )[A-Za-z0-9\s]{3,}$/,
+    email: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+    password: /^(?=.*?\d)(?=.*?[a-zA-Z])[a-zA-Z\d]+$/,
+  };
+
+  if (!fName) {
     error++;
-    fName.classList.add("is-invalid")
-    console.log("te has equivocado");
+    fName.classList.add("is-invalid");
+    console.log(error);
+  } else if (regExp.nameAndSurname.test(fName.value)){
+     console.log("correcto! has esctrito un nombre")
+  } else {
+    error++
+    fName.classList.add("is-invalid");
+    console.log(error)
   }
 
-  if (fLastName.value === "" || fLastName !== nameAndSurnameValidation) {
+  // if (!fLastName) {
+  //   error++
+  //   fLastName.classList.add("is-invalid")
+  // } else if (regExp.nameAndSurname.test(fLastName.value)) {
+  //   console.log("apellido bien")
+  // } else {
+  //   error++
+  //   fLastName.classList.add("is-invalid")
+  // }
+
+  if (regExp.nameAndSurname.test(fLastName.value)) {
+    console.log("apellido bien")
+  } else {
     error++
     fLastName.classList.add("is-invalid")
-    console.log('escribe bien')
-  }
-   
-  if (fPhone.value === "" || fPhone !== phoneValidation) {
-    error++
-    fPhone.classList.add("is-invalid")
-    console.log('eso no es un teléfono')
   }
 
-  if (fEmail.value === "" || fEmail !== emailValidation ) {
-    error++;
-    fEmail.classList.add("is-invalid")
-    console.log('no sabes escribir un email')
-  }
-
-  if (fPassword.value === "" || fPassword !== passwordValidation) {
-    fPassword.classList.add("is-invalid")
-    console.log("maaaaaaaal")
-  }
+ 
 
 
 
