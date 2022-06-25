@@ -35,11 +35,7 @@ function validate(event) {
     password: /^(?=.*?\d)(?=.*?[a-zA-Z])[a-zA-Z\d]+$/,
   };
 
-  if (!fName) {
-    error++;
-    fName.classList.add("is-invalid");
-    console.log(error);
-  } else if (regExp.nameAndSurname.test(fName.value)){
+  if (regExp.nameAndSurname.test(fName.value)){
      console.log("correcto! has esctrito un nombre")
   } else {
     error++
@@ -47,22 +43,42 @@ function validate(event) {
     console.log(error)
   }
 
-  // if (!fLastName) {
-  //   error++
-  //   fLastName.classList.add("is-invalid")
-  // } else if (regExp.nameAndSurname.test(fLastName.value)) {
-  //   console.log("apellido bien")
-  // } else {
-  //   error++
-  //   fLastName.classList.add("is-invalid")
-  // }
-
   if (regExp.nameAndSurname.test(fLastName.value)) {
-    console.log("apellido bien")
+    console.log("apellido bien!")
   } else {
     error++
     fLastName.classList.add("is-invalid")
+    console.log(error)
   }
+
+  if (regExp.email.test(fEmail.value)) {
+    console.log("email correcto")
+  } else {
+    error++
+    fEmail.classList.add("is-invalid")
+  }
+
+  if (regExp.password.test(fPassword.value)) {
+    console.log("contraseña bien")
+  } else {
+    error++
+    fPassword.classList.add("is-invalid")
+  }
+
+  if (regExp.address.test(fAddress.value)) {
+    console.log("buena dirección")
+  } else {
+    error++
+    fAddress.classList.add("is-invalid")
+  }
+
+  if (regExp.phone.test(fPhone.value)) {
+    console.log("telefono bien")
+  } else {
+    error++
+    fPhone.classList.add(fPhone.value)
+  }
+
 
  
 
