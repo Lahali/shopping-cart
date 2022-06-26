@@ -1,15 +1,13 @@
-
 //evitamos que el formulario corra el código.
 
 const form = document.getElementById("form");
-form.addEventListener("submit", (event) => {
-	event.preventDefault(validate)
-})
 
+form.addEventListener("submit", (event) => {
+  event.preventDefault(validate);
+});
 
 // Exercise 6
-function validate(event) {
- //event.preventDefault()
+function validate() {
 
   let error = 0;
   // Get the input fields
@@ -19,10 +17,6 @@ function validate(event) {
   const fPassword = document.getElementById("fPassword");
   const fAddress = document.getElementById("fAddress");
   const fPhone = document.getElementById("fPhone");
-
-  // Get the error elements
-  const errorName = document.getElementById("errorName");
-  const errorEmail = document.getElementById("errorEmail");
 
   // Validate fields entered by the user: name, phone, password, and email
 
@@ -35,58 +29,59 @@ function validate(event) {
     password: /^(?=.*?\d)(?=.*?[a-zA-Z])[a-zA-Z\d]+$/,
   };
 
-  if (regExp.nameAndSurname.test(fName.value)){
-     console.log("correcto! has esctrito un nombre")
+  if (regExp.nameAndSurname.test(fName.value)) {
+    fName.classList.add("is-valid")
+    console.log("correcto! has esctrito un nombre");
   } else {
-    error++
+    error++;
     fName.classList.add("is-invalid");
-    console.log(error)
+    console.log(error);
   }
 
   if (regExp.nameAndSurname.test(fLastName.value)) {
-    console.log("apellido bien!")
+    fLastName.classList.add("is-valid")
+    console.log("apellido bien!");
   } else {
-    error++
-    fLastName.classList.add("is-invalid")
-    console.log(error)
+    error++;
+    fLastName.classList.add("is-invalid");
+    console.log(error);
   }
 
   if (regExp.email.test(fEmail.value)) {
-    console.log("email correcto")
+    fEmail.classList.add("is-valid")
+    console.log("email correcto");
   } else {
-    error++
-    fEmail.classList.add("is-invalid")
+    error++;
+    fEmail.classList.add("is-invalid");
   }
 
   if (regExp.password.test(fPassword.value)) {
-    console.log("contraseña bien")
+    fPassword.classList.add("is-valid")
+    console.log("contraseña bien");
   } else {
-    error++
-    fPassword.classList.add("is-invalid")
+    error++;
+    fPassword.classList.add("is-invalid");
   }
 
   if (regExp.address.test(fAddress.value)) {
-    console.log("buena dirección")
+    fAddress.classList.add("is-valid")
+    console.log("buena dirección");
   } else {
-    error++
-    fAddress.classList.add("is-invalid")
+    error++;
+    fAddress.classList.add("is-invalid");
   }
 
   if (regExp.phone.test(fPhone.value)) {
-    console.log("telefono bien")
+    fPhone.classList.add("is-valid")
+    console.log("telefono bien");
   } else {
-    error++
-    fPhone.classList.add(fPhone.value)
+    error++;
+    fPhone.classList.add("is-invalid");
   }
 
-
- 
-
-
-
   if (error > 0) {
-    alert("Error");
+    alert("Revisa los datos, hay algo que no va bien.");
   } else {
-    alert("OK");
+    alert("Genial! Tus datos han sido guardados.");
   }
 }
