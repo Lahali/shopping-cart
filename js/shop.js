@@ -185,18 +185,17 @@ function removeFromCart(id) {
 
   const cartNumber = document.getElementById("count_product");
 
-  const foundInProducts = products.find((object) => object.id === id);
-  const foundInCart = cart.find((object) => object.id === foundInProducts.id);
+  const foundInCart = cart.find((object) => object.id === id);
+  const index = cart.indexOf(foundInCart);
 
-  if (foundInCart !== undefined) {
-    const index = cart.indexOf(foundInCart);
-    cart[index].quantity--;
-    cartNumber.innerHTML--;
-  }
-
-  if (cart.length === 1 && foundInCart !== undefined) {
-    const index = cart.indexOf(foundInCart);
-    cart.splice(index, 1);
+  if (cart[index].id === id) {
+    if (cart[index].quantity === 1) {
+      cart.splice(index, 1);
+      cartNumber.innerHTML--;
+    } else if (cart[index].quantity > 1) {
+      cart[index].quantity--;
+      cartNumber.innerHTML--;
+    }
   }
 
   calculateSubtotalRefactorized();
