@@ -6,7 +6,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault(validate);
 });
 
-// Exercise 6
+// Exercise 7
 function validate() {
 
   let error = 0;
@@ -30,52 +30,64 @@ function validate() {
   };
 
   if (regExp.nameAndSurname.test(fName.value)) {
+    fName.classList.remove("is-invalid")
     fName.classList.add("is-valid")
     console.log("correcto! has esctrito un nombre");
   } else {
     error++;
+    fName.classList.remove("is-valid")
     fName.classList.add("is-invalid");
     console.log(error);
   }
 
   if (regExp.nameAndSurname.test(fLastName.value)) {
+    fLastName.classList.remove("is-invalid")
     fLastName.classList.add("is-valid")
     console.log("apellido bien!");
   } else {
     error++;
+    fLastName.classList.remove("is-valid")
     fLastName.classList.add("is-invalid");
     console.log(error);
   }
 
   if (regExp.email.test(fEmail.value)) {
+    fEmail.classList.remove("is-invalid")
     fEmail.classList.add("is-valid")
     console.log("email correcto");
   } else {
     error++;
+    fEmail.classList.remove("is-valid")
     fEmail.classList.add("is-invalid");
   }
 
   if (regExp.password.test(fPassword.value)) {
+    fPassword.classList.remove("is-invalid")
     fPassword.classList.add("is-valid")
     console.log("contraseña bien");
   } else {
     error++;
+    fPassword.classList.remove("is-valid")
     fPassword.classList.add("is-invalid");
   }
 
   if (regExp.address.test(fAddress.value)) {
+    fAddress.classList.remove("is-invalid")
     fAddress.classList.add("is-valid")
     console.log("buena dirección");
   } else {
     error++;
+    fAddress.classList.remove("is-valid")
     fAddress.classList.add("is-invalid");
   }
 
   if (regExp.phone.test(fPhone.value)) {
+    fPhone.classList.remove("is-invalid")
     fPhone.classList.add("is-valid")
     console.log("telefono bien");
   } else {
     error++;
+    fPhone.classList.remove("is-valid")
     fPhone.classList.add("is-invalid");
   }
 
@@ -85,3 +97,7 @@ function validate() {
     alert("Genial! Tus datos han sido guardados.");
   }
 }
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault(validate);
+});

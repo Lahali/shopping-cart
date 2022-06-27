@@ -19,7 +19,6 @@ function buy(id) {
     }
   }
   console.log(cartList);
-  //calculateTotal();
 }
 
 // Exercise 2
@@ -112,9 +111,9 @@ function printCart() {
 
   const table = document.getElementById("cart_list");
   table.innerHTML = "";
-  let totalPriceDiscount = 0
-  let totalPriceNoDiscount = 0
-  
+  let totalPriceDiscount = 0;
+  let totalPriceNoDiscount = 0;
+
   for (let counter = 0; counter < cart.length; counter++) {
     const row = document.createElement("tr");
     const cellProductName = document.createElement("th");
@@ -129,7 +128,7 @@ function printCart() {
     } else {
       cellProductTotal.innerHTML = cart[counter].subtotalWithDiscount;
     }
-    
+
     row.appendChild(cellProductName);
     row.appendChild(cellProductPrice);
     row.appendChild(cellProductQuantity);
@@ -137,30 +136,49 @@ function printCart() {
     table.appendChild(row);
 
     if (!cart[counter].subtotalWithDiscount) {
-      totalPriceNoDiscount += cart[counter].subtotal
+      totalPriceNoDiscount += cart[counter].subtotal;
     } else {
-      totalPriceDiscount += cart[counter].subtotalWithDiscount
+      totalPriceDiscount += cart[counter].subtotalWithDiscount;
     }
-
   }
-  
-  const elementPrice = document.getElementById("total_price");
-  const totalPrice = (totalPriceDiscount + totalPriceNoDiscount)
-  elementPrice.innerHTML = totalPrice.toFixed(2)
-  console.log(totalPrice)
 
+  const elementPrice = document.getElementById("total_price");
+  const totalPrice = totalPriceDiscount + totalPriceNoDiscount;
+  elementPrice.innerHTML = totalPrice.toFixed(2);
+  console.log(totalPrice);
 }
 
 // ** Nivell II **
 
-// Exercise 7
+// Exercise 8
 function addToCart(id) {
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+
+  products.forEach((element) => {
+    element.quantity = 1;
+  });
+
+  for (let counter = 0; counter < products.length; counter++) {
+    if (counter === id) {
+      cart.push(products[counter-1])
+    }
+  }
+
+  cart.sort((a, b) => {
+    a.id - b.id
+  })
+
+
+
+  
+console.log(products)
+
+console.log(cart);
 }
 
-// Exercise 8
+// Exercise 9
 function removeFromCart(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
