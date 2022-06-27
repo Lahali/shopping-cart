@@ -156,27 +156,26 @@ function addToCart(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cart array or update its quantity in case it has been added previously.
 
-  const found = products.find(object => object.id === id)
-  if (found !== undefined) {
-    const foundProduct = cart.find(object => object.id === found.id)
-    if (foundProduct !== undefined) {
-      const index = cart.indexOf(foundProduct)
-      cart[index].quantity++
-    } else {
-      const itemToAdd = products.indexOf(found)
-      products[itemToAdd].quantity = 1
-      cart.push(products[itemToAdd])
-    }
+  const cartNumber = document.getElementById("count_product");
+
+  //necesitamos usar en find en los dos array para que pueda comparar
+  const foundInProducts = products.find((object) => object.id === id);
+  const foundInCart = cart.find((object) => object.id === foundInProducts.id);
+  if (foundInCart !== undefined) {
+    //necesitamos el indexOf para dar posición al objeto!! El find no dice en qué posición está
+    const index = cart.indexOf(foundInCart);
+    cart[index].quantity++;
+    cartNumber.innerHTML++;
+  } else {
+    const itemToAdd = products.indexOf(foundInProducts);
+    products[itemToAdd].quantity = 1;
+    cartNumber.innerHTML++;
+    cart.push(products[itemToAdd]);
   }
 
-
-  cart.forEach((element, index) => {
-    cart[index];
-    element.subtotal = cart[index].quantity * cart[index].price;
-  });
-
+  calculateSubtotalRefactorized();
   console.log(cart);
-  applyPromotionsCart()
+  applyPromotionsCart();
 }
 
 // Exercise 9
@@ -184,7 +183,31 @@ function removeFromCart(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
 
+  const cartNumber = document.getElementById("count_product");
 
+  const foundInProducts = products.find((object) => object.id === id);
+  const foundInCart = cart.find((object) => object.id === foundInProducts.id);
+
+  if (foundInCart !== undefined) {
+    const index = cart.indexOf(foundInCart);
+    cart[index].quantity--;
+    cartNumber.innerHTML--;
+  }
+
+  if (cart.length === 1 && foundInCart !== undefined) {
+    const index = cart.indexOf(foundInCart);
+    cart.splice(index, 1);
+  }
+
+  calculateSubtotalRefactorized();
+  console.log(cart);
+}
+
+function calculateSubtotalRefactorized() {
+  cart.forEach((element, index) => {
+    cart[index];
+    element.subtotal = cart[index].quantity * cart[index].price;
+  });
 }
 
 function open_modal() {
