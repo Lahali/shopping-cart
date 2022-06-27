@@ -155,25 +155,23 @@ function addToCart(id) {
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cart array or update its quantity in case it has been added previously.
-
-  products.forEach((element) => {
+  
+  products.forEach((element, index) => {
+    products[index];
     element.quantity = 1;
   });
 
-  for (let counter = 0; counter < products.length; counter++) {
-    if (counter === id) {
-      cart.push(products[counter-1])
+  const found = products.find(object => object.id === id)
+  if (found !== undefined) {
+    const foundProduct = cart.find(object => object.id === found.id)
+    if (foundProduct !== undefined) {
+      const index = cart.indexOf(foundProduct)
+      cart[index].quantity++
+    } else {
+      const itemToAdd = products.indexOf(found)
+      cart.push(products[itemToAdd])
     }
   }
-
-  cart.sort((a, b) => {
-    a.id - b.id
-  })
-
-
-
-  
-console.log(products)
 
 console.log(cart);
 }
@@ -182,6 +180,8 @@ console.log(cart);
 function removeFromCart(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
+
+  
 }
 
 function open_modal() {
